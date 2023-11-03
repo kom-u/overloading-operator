@@ -25,10 +25,10 @@ public:
     friend std::ostream& operator<< (std::ostream& out, const Fraction& fraction);
     friend std::istream& operator>> (std::istream& in, Fraction& fraction);
 
-    const Fraction operator+(const Fraction& _fraction) const;
-    const Fraction operator-(const Fraction& _fraction) const;
-    const Fraction operator*(const Fraction& _fraction) const;
-    const Fraction operator/(const Fraction& _fraction) const;
+    Fraction operator+(const Fraction& _fraction) const;
+    Fraction operator-(const Fraction& _fraction) const;
+    Fraction operator*(const Fraction& _fraction) const;
+    Fraction operator/(const Fraction& _fraction) const;
     double operator==(const Fraction& _fraction) const;
     bool operator<(int _fraction) const;
     bool operator>(int _fraction) const;

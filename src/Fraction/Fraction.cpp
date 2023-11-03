@@ -44,7 +44,7 @@ std::istream &operator>>(std::istream &in, Fraction &fraction) {
     return in;
 }
 
-const Fraction Fraction::operator+(const Fraction &_fraction) const {
+Fraction Fraction::operator+(const Fraction &_fraction) const {
     Fraction fraction;
     fraction.numerator = (this->numerator * _fraction.denominator) + (this->denominator * _fraction.numerator);
     fraction.denominator = this->denominator * _fraction.denominator;
@@ -52,15 +52,26 @@ const Fraction Fraction::operator+(const Fraction &_fraction) const {
     return fraction;
 }
 
-const Fraction Fraction::operator-(const Fraction &_fraction) const {
+Fraction Fraction::operator-(const Fraction &_fraction) const {
     Fraction fraction;
+    
     fraction.numerator = (this->numerator * _fraction.denominator) - (this->denominator * _fraction.numerator);
+    if (fraction.numerator == 0)
+    {
+        return fraction;
+    }
+    
     fraction.denominator = this->denominator * _fraction.denominator;
     fraction.Reduce();
+    
+    if (fraction.denominator <= 0)
+    {
+        fraction.denominator *= -1;
+    }
     return fraction;
 }
 
-const Fraction Fraction::operator*(const Fraction &_fraction) const {
+Fraction Fraction::operator*(const Fraction &_fraction) const {
     Fraction fraction;
     fraction.numerator = this->numerator * _fraction.numerator;
     fraction.denominator = this->denominator * _fraction.denominator;
@@ -68,7 +79,7 @@ const Fraction Fraction::operator*(const Fraction &_fraction) const {
     return fraction;
 }
 
-const Fraction Fraction::operator/(const Fraction &_fraction) const {
+Fraction Fraction::operator/(const Fraction &_fraction) const {
     Fraction fraction;
     fraction.numerator = this->numerator * _fraction.denominator;
     fraction.denominator = this->denominator * _fraction.numerator;
